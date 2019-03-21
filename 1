@@ -1,0 +1,11 @@
+from django.conf.urls import url
+
+from assessment.views import QuestionnaireView, TemplateDetail, CreateTemplate
+
+app_name = 'assessment'
+
+urlpatterns = [
+        url(r"^$", QuestionnaireView.as_view(), name="questionnaire"),
+        url(r"^(?P<id>\d+)/", TemplateDetail.as_view(), name="template-detail"),
+        url(r"^create_template/$", CreateTemplate.as_view(), name="create_template"),
+]

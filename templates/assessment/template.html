@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>{{template.name}}</title>
+	</head>
+	<body>
+		<h1> {{template.name}} </h1>
+		<div class="template-description"> {{template.description|safe}} </div>
+		<div><form action="{% url 'template-detail' id=template.id %}" method="post">
+	    {% csrf_token %}
+        {% for category in categories %}
+            <h3> {{category}} </h3>
+            <p> {{category.description}} </p>
+
+
+			        
+	
+	                           {% include "assessment/question.html" %}
+                                
+           
+        {% empty %}
+            <h3> Questions  </h3>
+            {% include "assessment/question.html" %}
+        {% endfor %}
+
+        <br>
+
+	    <input
+            class="btn btn-primary"
+	        type="submit"
+	        value="Submit"
+        >
+	</form></div>
+	</body>
+</html>
